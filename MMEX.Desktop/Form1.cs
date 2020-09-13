@@ -21,23 +21,28 @@ namespace MMEX.Desktop
 
         public AccountMngr _AccountMngr { get; set; }
         public CurrencyMngr _CurrencyMngr { get; set; }
-        public string DbPath = "C:\\xxx.db";
+        public string DbPath = "C:\\pippo2.mmb";
 
         private void button1_Click(object sender, EventArgs e)
         {
             _AccountMngr = new AccountMngr(DbPath);
             _CurrencyMngr = new CurrencyMngr(DbPath);
 
-            Currency curr = new Currency();
-            curr.Name = "Currency1";
+            Currency curr = new Currency
+            {
+                Name = "Currency1",
+                Symbol = "CURR1"
+            };
             int iCurr = _CurrencyMngr.Save(curr);
 
-            Account acc = new Account();
-            acc.Name = "Prova";
-            acc.Type = "Checking";
-            acc.Status = "Open";
-            acc.Favorite = "Yes";
-            acc.Currency = iCurr;
+            Account acc = new Account
+            {
+                Name = "Prova",
+                Type = "Checking",
+                Status = "Open",
+                Favorite = "Yes",
+                Currency = iCurr
+            };
 
             _AccountMngr.Save(acc);
         }
@@ -48,7 +53,7 @@ namespace MMEX.Desktop
             _CurrencyMngr = new CurrencyMngr(DbPath);
             Account acc = _AccountMngr.GetAll().FirstOrDefault();
             Currency curr = _CurrencyMngr.GetById(acc.Currency);
-            MessageBox.Show(String.Format("Account: {0}{1}Currency: {2}",acc.Name,Environment.NewLine,curr.Name));
+            MessageBox.Show(string.Format("Account: {0}{1}Currency: {2}",acc.Name,Environment.NewLine,curr.Name));
         }
     }
 }

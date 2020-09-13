@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MMEX.Desktop</RootNamespace>
     <AssemblyName>MMEX.Desktop</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
@@ -37,7 +37,7 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>..\MMEX.Common\Resources\Logos\mmex.ico</ApplicationIcon>
+    <ApplicationIcon>mmex.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,17 +48,10 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Portable.DataAnnotations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Portable.DataAnnotations.1.0.0\lib\net45\Portable.DataAnnotations.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLite3Plugin, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SQLitePCL.plugin.sqlite3.net45.0.9.0-pre7\lib\net45\SQLite3Plugin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -101,9 +94,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,28 +109,36 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MMEX.Common\Data\MMEX.Common.Data.csproj">
-      <Project>{5f238485-1691-4a9d-b398-4573854d397e}</Project>
+    <ProjectReference Include="..\MMEX.Common\MMEX.Common.Data\MMEX.Common.Data.csproj">
+      <Project>{12b0750f-0007-4fac-95d0-1cc42379d16b}</Project>
       <Name>MMEX.Common.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MMEX.Common\Resources\MMEX.Common.Resources.csproj">
-      <Project>{68e64586-295d-482c-8870-e38068fa37a0}</Project>
+    <ProjectReference Include="..\MMEX.Common\MMEX.Common.Extensions\MMEX.Common.Extensions.csproj">
+      <Project>{924c3f7b-1067-4959-b147-ef67ad0f4b7c}</Project>
+      <Name>MMEX.Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MMEX.Common\MMEX.Common.Helpers\MMEX.Common.Helpers.csproj">
+      <Project>{fc73480c-c339-40e6-a8e5-b1f0ccbf1a75}</Project>
+      <Name>MMEX.Common.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MMEX.Common\MMEX.Common.Resources\MMEX.Common.Resources.csproj">
+      <Project>{f500e4f2-bdc2-437b-ad5b-f412f6f43564}</Project>
       <Name>MMEX.Common.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="..\..\MMEX.Common\Resources\Logos\mmex.png">
       <Link>Resources\mmex.png</Link>
     </Content>
+    <Content Include="mmex.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\SQLitePCL.native.sqlcipher.windows.0.9.0-pre7\build\SQLitePCL.native.sqlcipher.windows.targets" Condition="Exists('..\packages\SQLitePCL.native.sqlcipher.windows.0.9.0-pre7\build\SQLitePCL.native.sqlcipher.windows.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlcipher.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlcipher.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlcipher.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlcipher.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SQLitePCL.native.sqlcipher.windows.0.9.0-pre7\build\SQLitePCL.native.sqlcipher.windows.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCL.native.sqlcipher.windows.0.9.0-pre7\build\SQLitePCL.native.sqlcipher.windows.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlcipher.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlcipher.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlcipher.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlcipher.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
