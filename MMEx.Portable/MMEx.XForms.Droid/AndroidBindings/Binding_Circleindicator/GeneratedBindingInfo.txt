@@ -1,0 +1,6 @@
+Binding for:
+me.relex:circleindicator:1.2.1@aar
+
+Dependencies:
+
+circleindicator-1.2.1.aar,    Path=C:\Users\alen_\.gradle\caches\modules-2\files-2.1\me.relex\circleindicator\1.2.1\7f44559b8fee88c928277ade0d301216a3f22e34\circleindicator-1.2.1.aar
